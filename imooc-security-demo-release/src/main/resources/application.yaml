@@ -2,6 +2,9 @@ spring:
   datasource:
     password: root123
     username: root
-    url: jdbc:mysql://47.103.30.139:3306/user_db
+    url: jdbc:mysql://47.103.30.139:3306/user_db?characterEncoding=utf8&useSSL=false&autoReconnect=true
   session:
     store-type: none
+
+server:
+  connection-timeout: 5000
