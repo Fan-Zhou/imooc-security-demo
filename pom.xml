@@ -11,6 +11,7 @@
         <module>imooc-security-core</module>
         <module>imooc-security-app</module>
         <module>imooc-security-browser</module>
+        <module>imooc-security-demo-release</module>
     </modules>
     <packaging>pom</packaging>
 

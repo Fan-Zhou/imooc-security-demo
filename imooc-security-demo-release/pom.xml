@@ -9,19 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>imooc-security-browser</artifactId>
-
+    <artifactId>imooc-security-demo-release</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>imooc-security-core</artifactId>
+            <artifactId>imooc-security-browser</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session</artifactId>
         </dependency>
     </dependencies>
 

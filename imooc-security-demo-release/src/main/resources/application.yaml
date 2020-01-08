@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    password: root123
+    username: root
+    url: jdbc:mysql://47.103.30.139:3306/user_db
+  session:
+    store-type: none
