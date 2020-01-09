@@ -1,9 +1,11 @@
 package cn.zhou.controller;
 
 import cn.zhou.dto.User;
+import cn.zhou.exception.UserException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Constraint;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +37,23 @@ public class UserController {
 //    @RequestBody  可以接受json字符串并组装
     @PostMapping
     public User create(@RequestBody @Valid User user, BindingResult bindingResult){
-        bindingResult.getAllErrors().stream().forEach(error-> System.out.println(error.getDefaultMessage()));
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().stream().forEach(error -> System.out.println(error.getDefaultMessage()));
+        }
+
         System.out.println(user);
         User user1 = new User();
         user1.setId("1");
         return user1;
     }
 
+
+    @DeleteMapping("/user/{id}")
+    public User delete(@PathVariable String id){
+//        throw new UserException("delete");
+        User user = new User();
+        user.setId("1");
+        return user;
+    }
 
 }

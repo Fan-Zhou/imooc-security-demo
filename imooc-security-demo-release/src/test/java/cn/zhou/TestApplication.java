@@ -49,8 +49,15 @@ public class TestApplication {
 
     @Test
     public void whenCreateSuccess() throws Exception {
-        String content = "{\"id\":1,\"username\":\"jerry\",\"password\":\"\"}";
+        String content = "{\"id\":2,\"username\":\"jerry\",\"password\":\"\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/user").contentType(MediaType.APPLICATION_JSON_UTF8).content(content))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
+    }
+
+    @Test
+    public void whenDeleteSuccess() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/user/1").contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
     }
