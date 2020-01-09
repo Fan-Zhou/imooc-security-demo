@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class TimeAspect {
 
 
-    @Around("execution(* cn.zhou.controller.*(..))")
+    @Around("execution(* cn.zhou.controller.UserController.*(..))")
     public Object handleController(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("before aspect ");
 
@@ -28,7 +28,7 @@ public class TimeAspect {
             System.out.println(user);
         }
         System.out.println("after aspect");
-        return null;
+        return object;
     }
 
 }
