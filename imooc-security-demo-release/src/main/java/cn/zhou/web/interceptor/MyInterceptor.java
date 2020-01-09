@@ -1,10 +1,12 @@
 package cn.zhou.web.interceptor;
 
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sound.midi.Soundbank;
 
 
 public class MyInterceptor implements HandlerInterceptor {
@@ -12,6 +14,13 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         System.out.println("pre Handle");
+
+        HandlerMethod method = (HandlerMethod)o;
+        System.out.println(method.getBean());
+        System.out.println(method.getReturnType());
+        System.out.println(method.getMethod());
+        System.out.println(method.getClass());
+        System.out.println("pre handle");
         return true;
     }
 

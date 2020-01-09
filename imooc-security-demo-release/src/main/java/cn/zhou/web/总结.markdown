@@ -1,0 +1,13 @@
+##  filter interceptor  和 aspect
+
+### filter 
+- 可以获取原始的response和request 但是无法获得请求的方法和请求的参数
+- doFilter(request,response);
+### interceptor
+ - 可以获取请求的方法 返回值类型之类的
+ - preHandle(request,response,object);
+ - 该object 实际上是 HandleMethod类。可以调用该类的方法获取请求的方法的一些信息，但实际上任然无法获得实际传递的参数。 详情看源码 = =
+ - 会根据preHandle的返回值 来判断是否继续执行，如果是true的话 才开始拼装参数。所以preHandle方法 无法获得传递的参数。
+ ###Aspect
+ - 可以获得传递的参数 ProceedingJoinPoint 和返回值的类型，
+ - 不可以获取request 和 response 的内容。
