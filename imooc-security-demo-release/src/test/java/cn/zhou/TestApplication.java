@@ -62,5 +62,11 @@ public class TestApplication {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
     }
 
+    @Test
+    public void whenDownloadSuccess() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.fileUpload("/file").file("file","hello world".getBytes("utf-8")))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
 
 }
