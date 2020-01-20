@@ -4,6 +4,7 @@ package cn.zhou.controller;
 import cn.zhou.common.SimpleResponse;
 import cn.zhou.properties.SecurityPropertis;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -22,6 +23,8 @@ import java.io.IOException;
 @RestController
 public class BrowserSecurityController {
 
+
+
     //可以通过此类获取缓存中的session
     private RequestCache requestCache = new HttpSessionRequestCache();
 
@@ -39,7 +42,10 @@ public class BrowserSecurityController {
             //引发跳转的url
             String targetUrl = savedRequest.getRedirectUrl();
             if(StringUtils.endsWithIgnoreCase(targetUrl,".html")){
+                System.out.println(securityPropertis.getBrowser().getLoginPage());
                 redirectStrategy.sendRedirect(request,response,securityPropertis.getBrowser().getLoginPage());
+                //todo 目前会导致 一直重定向
+                return null;
             }
         }
         return new SimpleResponse("bad request");
