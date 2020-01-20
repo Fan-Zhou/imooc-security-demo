@@ -2,15 +2,24 @@ package cn.zhou.controller;
 
 import cn.zhou.dto.User;
 import cn.zhou.exception.UserException;
+import com.deepoove.poi.XWPFTemplate;
+import com.sun.deploy.net.HttpResponse;
+import io.swagger.annotations.ApiParam;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.validation.Constraint;
 import javax.validation.Valid;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
+@EnableSwagger2
+@RequestMapping
 public class UserController {
 
     @GetMapping("user")
@@ -22,10 +31,9 @@ public class UserController {
         return users;
     }
 
-
 //    {id:\\d+}  正则表达式  只能数字
     @GetMapping("/user/{id:\\d+}")
-    public User getInfo(@PathVariable String id){
+    public User getInfo(@PathVariable  @ApiParam("用户id") String id){
         System.out.println(id );
         User user = new User();
         user.setUsername("tom");
@@ -55,5 +63,6 @@ public class UserController {
         user.setId("1");
         return user;
     }
+
 
 }

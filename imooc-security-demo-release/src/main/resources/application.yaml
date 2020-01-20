@@ -8,6 +8,6 @@ spring:
 
 server:
   connection-timeout: 5000
-security:
-  basic:
-    enabled: false
+  port: 10010
+
+

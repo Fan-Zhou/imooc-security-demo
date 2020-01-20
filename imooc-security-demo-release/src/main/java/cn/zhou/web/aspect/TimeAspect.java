@@ -7,9 +7,9 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 
-
-@Aspect
-@Component
+//
+//@Aspect
+//@Component
 public class TimeAspect {
 
     //todo  三种方法的总结

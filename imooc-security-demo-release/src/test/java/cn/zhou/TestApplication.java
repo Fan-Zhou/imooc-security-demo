@@ -17,6 +17,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class TestApplication {
@@ -66,6 +71,23 @@ public class TestApplication {
     public void whenDownloadSuccess() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.fileUpload("/file").file("file","hello world".getBytes("utf-8")))
                 .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void createMonth(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月");
+        Date date = new Date();
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, -1);
+        sdf.format(cal.getTime());
+
+
+        System.out.println("========"+sdf.format( cal.getTime()));
+        System.out.println("***********"+cal.getTime());
+
+
     }
 
 
