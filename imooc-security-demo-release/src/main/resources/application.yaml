@@ -12,4 +12,4 @@ server:
 imooc:
   security:
     browser:
-      loginPage: myLogin.html
+      loginPage: /myLogin.html

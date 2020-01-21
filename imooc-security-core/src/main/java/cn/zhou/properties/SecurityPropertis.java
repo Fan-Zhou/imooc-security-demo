@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecurityPropertis {
     BrowserProperties browser = new BrowserProperties();
+
 }

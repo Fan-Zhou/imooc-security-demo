@@ -45,7 +45,6 @@ public class BrowserSecurityController {
                 System.out.println(securityPropertis.getBrowser().getLoginPage());
                 redirectStrategy.sendRedirect(request,response,securityPropertis.getBrowser().getLoginPage());
                 //todo 目前会导致 一直重定向
-                return null;
             }
         }
         return new SimpleResponse("bad request");
