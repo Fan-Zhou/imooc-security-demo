@@ -4,16 +4,13 @@ package cn.zhou.controller;
 import cn.zhou.common.SimpleResponse;
 import cn.zhou.properties.SecurityPropertis;
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +31,6 @@ public class BrowserSecurityController {
     private SecurityPropertis securityPropertis;
 
     @RequestMapping("/authentication/require")
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
@@ -44,9 +40,8 @@ public class BrowserSecurityController {
             if(StringUtils.endsWithIgnoreCase(targetUrl,".html")){
                 System.out.println(securityPropertis.getBrowser().getLoginPage());
                 redirectStrategy.sendRedirect(request,response,securityPropertis.getBrowser().getLoginPage());
-                //todo 目前会导致 一直重定向
             }
         }
-        return new SimpleResponse("bad request");
+        return new SimpleResponse("401","bad request ");
     }
 }

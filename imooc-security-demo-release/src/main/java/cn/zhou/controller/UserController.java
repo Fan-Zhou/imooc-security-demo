@@ -1,20 +1,13 @@
 package cn.zhou.controller;
 
 import cn.zhou.dto.User;
-import cn.zhou.exception.UserException;
-import com.deepoove.poi.XWPFTemplate;
-import com.sun.deploy.net.HttpResponse;
 import io.swagger.annotations.ApiParam;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import javax.validation.Constraint;
 import javax.validation.Valid;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController

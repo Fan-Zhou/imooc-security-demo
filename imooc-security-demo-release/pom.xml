@@ -12,6 +12,8 @@
     <artifactId>imooc-security-demo-release</artifactId>
 
     <dependencies>
+
+
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>imooc-security-browser</artifactId>
@@ -52,36 +54,7 @@
             <version>2.7.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.deepoove</groupId>
-            <artifactId>poi-tl</artifactId>
-            <version>1.6.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.poi</groupId>
-                    <artifactId>poi</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>4.1.1</version>
-        </dependency>
-
-
-         https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>4.1.1</version>
-        </dependency>
 
 
     </dependencies>
