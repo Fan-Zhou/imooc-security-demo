@@ -22,7 +22,7 @@ public class ImoocAuthenticationSuccessHandler implements AuthenticationSuccessH
         httpServletResponse.setContentType("application/json;charset=UTF-8");
         httpServletResponse.getWriter().write(JSON.toJSONString(authentication));
 
-        System.out.println(authentication);
+        System.out.println("认证成功"+authentication);
     }
 }
 

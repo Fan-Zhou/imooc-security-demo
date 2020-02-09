@@ -20,6 +20,6 @@ public class ImoocAuthenticationFailurHandler implements AuthenticationFailureHa
         httpServletResponse.setContentType("application/json;charset=UTF-8");
         httpServletResponse.getWriter().write(JSON.toJSONString(new SimpleResponse("400",e.getMessage())));
 
-        System.out.println(e);
+        System.out.println("认证失败"+e);
     }
 }
