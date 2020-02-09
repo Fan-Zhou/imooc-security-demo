@@ -25,3 +25,4 @@ public class ImoocAuthenticationSuccessHandler implements AuthenticationSuccessH
         System.out.println(authentication);
     }
 }
+
