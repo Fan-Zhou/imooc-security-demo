@@ -14,6 +14,8 @@ public class ImageCode {
     //过期时间
     private LocalDateTime expireTime;
 
+
+
     public ImageCode(BufferedImage image, String code, int expireSeconds) {
         this.image = image;
         this.code = code;

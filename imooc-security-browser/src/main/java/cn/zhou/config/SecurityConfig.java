@@ -11,6 +11,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -25,11 +29,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationFailureHandler imoocAuthenticationFailureHandler;
 
+    @Autowired
+    private DataSource dataSource;
 
+    @Autowired
+    private UserDetailService userDetailService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository(){
+        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+        tokenRepository.setDataSource(dataSource);
+        //生成表
+//        tokenRepository.setCreateTableOnStartup(true);
+        return tokenRepository;
     }
 
     @Override
@@ -42,6 +59,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/authentication/require")
                 .successHandler(imoocAuthenticationSuccessHandler)
                 .failureHandler(imoocAuthenticationFailureHandler)
+                .and()
+                //remember 配置
+                .rememberMe()
+                .tokenRepository(persistentTokenRepository())
+                .userDetailsService(userDetailService)
+                .tokenValiditySeconds(securityPropertis.getBrowser().getRememberMeSeconds())
                 .and()
                 .authorizeRequests()
                 .antMatchers("/authentication/require"

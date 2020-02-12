@@ -13,3 +13,7 @@ imooc:
   security:
     browser:
       loginPage: /userLogin.html
+    code:
+      imageCodeProperties:
+        length: 6
+
